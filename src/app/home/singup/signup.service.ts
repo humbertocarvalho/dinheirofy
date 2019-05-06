@@ -9,15 +9,13 @@ const API = environment.ApiUrl;
 
 @Injectable()
 export class SignUpService {
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) {}
+  checkUserNameTaken(userName: string) {
+    return this.http.get(API + '/user/exists/' + userName);
+  }
 
-    checkUserNameTaken(userName: string) {
-
-        return this.http.get(API + '/user/exists/' + userName);
-    }
-
-    signup(newUser: NewUser) {
-        return this.http.post(API + '/user/signup', newUser);
-    }
+  signup(newUser: NewUser) {
+    return this.http.post(API + '/user/register', newUser);
+  }
 }

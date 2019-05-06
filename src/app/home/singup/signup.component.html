@@ -1,87 +1,160 @@
 <h4 class="text-center">Register to embrace a new world!</h4>
 
-<form #form="ngForm" [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
-    <div class="form-group">
-        <input #emailInput formControlName="email" class="form-control" placeholder="email" autofocus>
-        <df-vmessage 
-            *ngIf="signupForm.get('email').errors?.required && (form.submitted || signupForm.get('email').touched)"
-            text="Email is required!">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('email').errors?.email && (form.submitted || signupForm.get('email').touched)"
-            text="Invalid e-mail">
-        </df-vmessage>            
-    </div>
+<form
+  #form="ngForm"
+  [formGroup]="signupForm"
+  class="form mt-4"
+  (submit)="signup()"
+>
+  <div class="form-group">
+    <input
+      #emailInput
+      formControlName="email"
+      class="form-control"
+      placeholder="email"
+      autofocus
+    />
+    <df-vmessage
+      *ngIf="
+        signupForm.get('email').errors?.required &&
+        (form.submitted || signupForm.get('email').touched)
+      "
+      text="Email is required!"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('email').errors?.email &&
+        (form.submitted || signupForm.get('email').touched)
+      "
+      text="Invalid e-mail"
+    >
+    </df-vmessage>
+  </div>
 
-    <div class="form-group">
-        <input formControlName="fullName" class="form-control" placeholder="full name">
-        <df-vmessage 
-            *ngIf="signupForm.get('fullName').errors?.required && (form.submitted || signupForm.get('fullName').touched)"
-            text="Full name is required!">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('fullName').errors?.minlength && (form.submitted || signupForm.get('fullName').touched)"
-            text="Mininum length is 2">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('fullName').errors?.maxlength && (form.submitted || signupForm.get('fullName').touched)"
-            text="Maximun length is 40">
-        </df-vmessage>              
-    </div>
+  <div class="form-group">
+    <input
+      formControlName="name"
+      class="form-control"
+      placeholder="full name"
+    />
+    <df-vmessage
+      *ngIf="
+        signupForm.get('name').errors?.required &&
+        (form.submitted || signupForm.get('name').touched)
+      "
+      text="Full name is required!"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('name').errors?.minlength &&
+        (form.submitted || signupForm.get('name').touched)
+      "
+      text="Mininum length is 2"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('name').errors?.maxlength &&
+        (form.submitted || signupForm.get('name').touched)
+      "
+      text="Maximun length is 40"
+    >
+    </df-vmessage>
+  </div>
 
-    <div class="form-group">
-        <input formControlName="userName" class="form-control" placeholder="user name">
-        <df-vmessage 
-            *ngIf="signupForm.get('userName').errors?.required&& (form.submitted || signupForm.get('userName').touched)"
-            text="User name is required!">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('userName').errors?.minlength && (form.submitted || signupForm.get('userName').touched)"
-            text="Mininum length is 2">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('userName').errors?.maxlength && (form.submitted || signupForm.get('userName').touched)"
-            text="Maximun length is 30">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('userName').errors?.lowerCase && (form.submitted || signupForm.get('userName').touched)"
-            text="Must be lower case">
-        </df-vmessage>
+  <div class="form-group">
+    <input
+      formControlName="userName"
+      class="form-control"
+      placeholder="user name"
+    />
+    <df-vmessage
+      *ngIf="
+        signupForm.get('userName').errors?.required &&
+        (form.submitted || signupForm.get('userName').touched)
+      "
+      text="User name is required!"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('userName').errors?.minlength &&
+        (form.submitted || signupForm.get('userName').touched)
+      "
+      text="Mininum length is 2"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('userName').errors?.maxlength &&
+        (form.submitted || signupForm.get('userName').touched)
+      "
+      text="Maximun length is 30"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('userName').errors?.lowerCase &&
+        (form.submitted || signupForm.get('userName').touched)
+      "
+      text="Must be lower case"
+    >
+    </df-vmessage>
 
-        <df-vmessage 
-            text="Username already taken" 
-            *ngIf="signupForm.get('userName').errors?.userNameTaken">
-        </df-vmessage> 
-        <small *ngIf="signupForm.get('userName').valid" class="text-success">User available</small>
-    </div>
+    <df-vmessage
+      text="Username already taken"
+      *ngIf="signupForm.get('userName').errors?.userNameTaken"
+    >
+    </df-vmessage>
+    <small *ngIf="signupForm.get('userName').valid" class="text-success"
+      >User available</small
+    >
+  </div>
 
-    <div class="form-group">
-        <input formControlName="password" type="password" class="form-control" placeholder="password">
-        <df-vmessage 
-            *ngIf="signupForm.get('password').errors?.required && (form.submitted || signupForm.get('password').touched)"
-            text="Password is required!">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('password').errors?.minlength && (form.submitted || signupForm.get('password').touched)"
-            text="Mininum length is 8">
-        </df-vmessage>
-        <df-vmessage 
-            *ngIf="signupForm.get('password').errors?.maxlength && (form.submitted || signupForm.get('password').touched)"
-            text="Maximun length is 18">
-        </df-vmessage>
+  <div class="form-group">
+    <input
+      formControlName="password"
+      type="password"
+      class="form-control"
+      placeholder="password"
+    />
+    <df-vmessage
+      *ngIf="
+        signupForm.get('password').errors?.required &&
+        (form.submitted || signupForm.get('password').touched)
+      "
+      text="Password is required!"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('password').errors?.minlength &&
+        (form.submitted || signupForm.get('password').touched)
+      "
+      text="Mininum length is 8"
+    >
+    </df-vmessage>
+    <df-vmessage
+      *ngIf="
+        signupForm.get('password').errors?.maxlength &&
+        (form.submitted || signupForm.get('password').touched)
+      "
+      text="Maximun length is 18"
+    >
+    </df-vmessage>
 
-        <df-vmessage 
-            *ngIf="signupForm.errors?.userNamePassword && form.submitted"
-            text="Username and password must be different">
-        </df-vmessage>
+    <df-vmessage
+      *ngIf="signupForm.errors?.userNamePassword && form.submitted"
+      text="Username and password must be different"
+    >
+    </df-vmessage>
+  </div>
 
-    </div>
+  <button class="btn btn-primary btn-block">Sign up</button>
 
-    <button class="btn btn-primary btn-block">Sign up</button>
-
-    
-    <button [routerLink]="['']" class="btn btn-primary btn-block">
-        Sign in
-    </button>    
-
+  <button [routerLink]="['']" class="btn btn-primary btn-block">
+    Sign in
+  </button>
 </form>

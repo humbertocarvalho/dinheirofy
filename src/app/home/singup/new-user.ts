@@ -1,6 +1,6 @@
 export interface NewUser {
-    userName: string, 
-    email: string,
-    fullName: string,
-    password: string
+  userName: string;
+  email: string;
+  name: string;
+  password: string;
 }
