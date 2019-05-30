@@ -6,43 +6,40 @@ import { PlatformDetectorService } from '../../core/plataform-detector/platform-
 import { Title } from '@angular/platform-browser';
 
 @Component({
-    templateUrl: './signin.component.html'
+  templateUrl: './signin.component.html'
 })
 export class SignInComponent implements OnInit {
-    
-    loginForm: FormGroup;
-    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
-    
-    constructor(
-        private formBuilder: FormBuilder,
-        private authService: AuthService,
-        private router: Router,
-        private platformDetectorService: PlatformDetectorService) { }
+  loginForm: FormGroup;
+  @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
 
-    ngOnInit(): void {
-        this.loginForm = this.formBuilder.group({
-            userName: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-        this.platformDetectorService.isPlatformBrowser() && 
-        this.userNameInput.nativeElement.focus();        
-    } 
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private platformDetectorService: PlatformDetectorService
+  ) {}
 
-    login() {
-        const userName = this.loginForm.get('userName').value;
-        const password = this.loginForm.get('password').value;
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
 
-        this.authService
-            .authenticate(userName, password)
-            .subscribe(
-                () => alert('Login efetuado com sucesso!'),
-                err => {
-                    console.log(err);
-                    this.loginForm.reset();
-                    this.platformDetectorService.isPlatformBrowser() && 
-                        this.userNameInput.nativeElement.focus();
-                    alert('Invalid user name or password');
-                }
-            );
-    }
+    this.platformDetectorService.isPlatformBrowser() &&
+      this.userNameInput.nativeElement.focus();
+  }
+
+  login() {
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
+
+    this.authService.authenticate(email, password).subscribe(
+      () => alert('Login efetuado com sucesso!'),
+      err => {
+        this.loginForm.reset();
+        this.platformDetectorService.isPlatformBrowser() &&
+          this.userNameInput.nativeElement.focus();
+        alert('Invalid user name or password');
+      }
+    );
+  }
 }

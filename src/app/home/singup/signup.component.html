@@ -30,6 +30,14 @@
       text="Invalid e-mail"
     >
     </df-vmessage>
+    <df-vmessage
+      text="Email already taken"
+      *ngIf="signupForm.get('email').errors?.emailTaken"
+    >
+    </df-vmessage>
+    <small *ngIf="signupForm.get('email').valid" class="text-success"
+      >User available</small
+    >
   </div>
 
   <div class="form-group">
@@ -66,55 +74,6 @@
 
   <div class="form-group">
     <input
-      formControlName="userName"
-      class="form-control"
-      placeholder="user name"
-    />
-    <df-vmessage
-      *ngIf="
-        signupForm.get('userName').errors?.required &&
-        (form.submitted || signupForm.get('userName').touched)
-      "
-      text="User name is required!"
-    >
-    </df-vmessage>
-    <df-vmessage
-      *ngIf="
-        signupForm.get('userName').errors?.minlength &&
-        (form.submitted || signupForm.get('userName').touched)
-      "
-      text="Mininum length is 2"
-    >
-    </df-vmessage>
-    <df-vmessage
-      *ngIf="
-        signupForm.get('userName').errors?.maxlength &&
-        (form.submitted || signupForm.get('userName').touched)
-      "
-      text="Maximun length is 30"
-    >
-    </df-vmessage>
-    <df-vmessage
-      *ngIf="
-        signupForm.get('userName').errors?.lowerCase &&
-        (form.submitted || signupForm.get('userName').touched)
-      "
-      text="Must be lower case"
-    >
-    </df-vmessage>
-
-    <df-vmessage
-      text="Username already taken"
-      *ngIf="signupForm.get('userName').errors?.userNameTaken"
-    >
-    </df-vmessage>
-    <small *ngIf="signupForm.get('userName').valid" class="text-success"
-      >User available</small
-    >
-  </div>
-
-  <div class="form-group">
-    <input
       formControlName="password"
       type="password"
       class="form-control"
@@ -142,12 +101,6 @@
         (form.submitted || signupForm.get('password').touched)
       "
       text="Maximun length is 18"
-    >
-    </df-vmessage>
-
-    <df-vmessage
-      *ngIf="signupForm.errors?.userNamePassword && form.submitted"
-      text="Username and password must be different"
     >
     </df-vmessage>
   </div>

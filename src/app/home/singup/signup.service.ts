@@ -11,8 +11,8 @@ const API = environment.ApiUrl;
 export class SignUpService {
   constructor(private http: HttpClient) {}
 
-  checkUserNameTaken(userName: string) {
-    return this.http.get(API + '/user/exists/' + userName);
+  checkEmailTaken(email: string) {
+    return this.http.get(API + '/user/exists/' + email);
   }
 
   signup(newUser: NewUser) {
