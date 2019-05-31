@@ -1,15 +1,14 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'df-menu',
-    templateUrl: './menu.component.html',
-    styleUrls: ['menu.component.css']
+  selector: 'df-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['menu.component.css'],
 })
-export class MenuComponent { 
+export class MenuComponent {
+  isShown = false;
 
-    isShown = false;
-
-    toggle() {
-        this.isShown = !this.isShown;
-    }
+  toggle() {
+    this.isShown = !this.isShown;
+  }
 }

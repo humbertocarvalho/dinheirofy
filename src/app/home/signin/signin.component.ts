@@ -6,7 +6,7 @@ import { PlatformDetectorService } from '../../core/plataform-detector/platform-
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  templateUrl: './signin.component.html'
+  templateUrl: './signin.component.html',
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
 
     this.platformDetectorService.isPlatformBrowser() &&

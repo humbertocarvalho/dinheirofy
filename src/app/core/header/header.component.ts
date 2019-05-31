@@ -5,22 +5,18 @@ import { User } from '../user/user';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'df-header',
-    templateUrl: './header.component.html'
+  selector: 'df-header',
+  templateUrl: './header.component.html',
 })
-export class HeaderComponent { 
+export class HeaderComponent {
+  user$: Observable<User>;
 
-    user$: Observable<User>;
+  constructor(private userService: UserService, private router: Router) {
+    this.user$ = userService.getUser();
+  }
 
-    constructor(
-        private userService: UserService, 
-        private router:Router) {
-
-        this.user$ = userService.getUser();
-    }
-
-    logout() {
-        this.userService.logout();
-        this.router.navigate(['']);
-    }
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['']);
+  }
 }

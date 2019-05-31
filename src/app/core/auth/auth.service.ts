@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
 const API_URL = 'http://localhost:3000';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient, private userService: UserService) {}

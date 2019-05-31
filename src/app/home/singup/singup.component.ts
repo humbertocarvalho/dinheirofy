@@ -11,7 +11,7 @@ import { userNamePassword } from './username-password.validator';
 
 @Component({
   templateUrl: './signup.component.html',
-  providers: [EmailNotTakenValidatorService]
+  providers: [EmailNotTakenValidatorService],
 })
 export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
@@ -30,16 +30,24 @@ export class SignUpComponent implements OnInit {
       email: [
         '',
         [Validators.required, Validators.email],
-        this.emailNotTakenValidatorService.checkEmailTaken()
+        this.emailNotTakenValidatorService.checkEmailTaken(),
       ],
       name: [
         '',
-        [Validators.required, Validators.minLength(2), Validators.maxLength(40)]
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(40),
+        ],
       ],
       password: [
         '',
-        [Validators.required, Validators.minLength(8), Validators.maxLength(14)]
-      ]
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(14),
+        ],
+      ],
     });
 
     this.platformDetectorService.isPlatformBrowser() &&

@@ -7,19 +7,13 @@ import { GlobalErrorHandler } from './global-error-handler/global-error-handler'
 import { GlobalErrorComponent } from './global-error/global-error.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  declarations: [
-    NotFoundComponent,
-    GlobalErrorComponent
-  ],
+  imports: [CommonModule, RouterModule],
+  declarations: [NotFoundComponent, GlobalErrorComponent],
   providers: [
     {
       provide: ErrorHandler,
-      useClass: GlobalErrorHandler
-    }
-  ]
+      useClass: GlobalErrorHandler,
+    },
+  ],
 })
-export class ErrorsModule { }
+export class ErrorsModule {}
