@@ -36,7 +36,7 @@ export class GlobalErrorHandler implements ErrorHandler {
           message,
           url,
           userName: userService.getUserName(),
-          stack: stackAsString,
+          stack: stackAsString
         })
         .subscribe(
           () => console.log('Error logged on server'),

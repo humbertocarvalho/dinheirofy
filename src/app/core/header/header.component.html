@@ -1,34 +1,37 @@
 <header class="fixed-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand">
+      <i
+        tabindex="0"
+        (keyup.space)="menu.toggle()"
+        (click)="menu.toggle()"
+        class="fa fa-bars mr-2"
+      ></i>
+      Dinheirofy
+    </a>
 
-    <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">
-            <i tabindex="0" (keyup.space)="menu.toggle()" (click)="menu.toggle()" class="fa fa-bars mr-2"></i>
-            Dinheirofy
-        </a>
-        
-        <df-menu #menu>
-            <ul class="list-unstyled">
-                <li>
-                    <a showIfLogged [routerLink]="['p','add']">Upload</a>
-                </li>
-            </ul>
-        </df-menu>
+    <df-menu #menu>
+      <ul class="list-unstyled">
+        <li>
+          <a showIfLogged [routerLink]="['p', 'add']">Upload</a>
+        </li>
+      </ul>
+    </df-menu>
 
-        <div *ngIf="(user$ | async) as user; else login">
-            <i class="fa fa-user-circle mr-1"></i>
-            <a class="mr-1">{{ user.name}}</a>
-            <a (click)="logout()">(Logout)</a>
-        </div>
-
-        <ng-template #login>
-            <span class="navbar-text">
-                <a [routerLink]="['']">Please, login!</a>
-            </span>
-        </ng-template> 
-    </nav>
-    <div class="fixed-top">
-        <df-loading></df-loading>
-        <df-alert></df-alert>
+    <div *ngIf="user$ | async as user; else login">
+      <i class="fa fa-user-circle mr-1"></i>
+      <a class="mr-1">{{ user.name }}</a>
+      <a (click)="logout()">(Logout)</a>
     </div>
-</header>
 
+    <ng-template #login>
+      <span class="navbar-text">
+        <a [routerLink]="['']">Please, login!</a>
+      </span>
+    </ng-template>
+  </nav>
+  <div class="fixed-top">
+    <df-loading></df-loading>
+    <df-alert></df-alert>
+  </div>
+</header>
