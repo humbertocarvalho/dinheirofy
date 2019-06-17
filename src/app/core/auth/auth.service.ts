@@ -12,18 +12,12 @@ export class AuthService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
   authenticate(email: string, password: string) {
-    return this.http
-      .post(
-        API_URL + '/auth/token',
-        { email, password },
-        { observe: 'response' }
-      )
-      .pipe(
-        tap(res => {
-          const authToken = res.body['accessToken'];
-          this.userService.setToken(authToken);
-          console.log(`User ${email} authenticated with token ${authToken}`);
-        })
-      );
+    return this.http.post(API_URL + '/auth/token', { email, password }, { observe: 'response' }).pipe(
+      tap(res => {
+        const authToken = res.body['accessToken'];
+        this.userService.setToken(authToken);
+        console.log(`User ${email} authenticated with token ${authToken}`);
+      })
+    );
   }
 }
