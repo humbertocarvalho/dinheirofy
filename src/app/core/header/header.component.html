@@ -10,7 +10,7 @@
     <df-menu #menu>
       <ul class="list-unstyled">
         <li>
-          <a showIfLogged [routerLink]="['p', 'add']">Upload</a>
+          <a showIfLogged [routerLink]="['p', 'add']">Início</a>
         </li>
       </ul>
     </df-menu>
@@ -20,13 +20,7 @@
       <a class="mr-1">{{ user.name }}</a>
       <a (click)="logout()">(Logout)</a>
     </div>
-
-    <!--<ng-template #login>
-      <span class="navbar-text">
-        <a [routerLink]="['']">Please, login!</a>
-      </span>
-    </ng-template>
-  --></nav>
+  </nav>
   <div class="fixed-top">
     <df-loading></df-loading>
     <df-alert></df-alert>

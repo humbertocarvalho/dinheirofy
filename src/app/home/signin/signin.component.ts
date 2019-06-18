@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
     const password = this.loginForm.get('password').value;
 
     this.authService.authenticate(email, password).subscribe(
-      () => alert('Login efetuado com sucesso!'),
+      () => null,
       err => {
         this.loginForm.reset();
         this.platformDetectorService.isPlatformBrowser() && this.userNameInput.nativeElement.focus();

@@ -3,19 +3,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app.routing.module';
+import { WalletsModule } from './wallets/wallets.module';
 import { ErrorsModule } from './errors/errors.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    ErrorsModule,
-    CoreModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, ErrorsModule, CoreModule, AppRoutingModule, HttpClientModule, WalletsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

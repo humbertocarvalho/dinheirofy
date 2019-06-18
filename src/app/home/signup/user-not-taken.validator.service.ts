@@ -12,9 +12,7 @@ export class EmailNotTakenValidatorService {
     return (control: AbstractControl) => {
       return control.valueChanges
         .pipe(debounceTime(300))
-        .pipe(
-          switchMap(userName => this.signUpService.checkEmailTaken(userName))
-        )
+        .pipe(switchMap(userName => this.signUpService.checkEmailTaken(userName)))
         .pipe(map(isTaken => (isTaken ? { emailTaken: true } : null)))
         .pipe(tap(r => console.log(r)))
         .pipe(first());
