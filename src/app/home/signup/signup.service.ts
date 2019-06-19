@@ -12,6 +12,7 @@ export class SignUpService {
   constructor(private http: HttpClient) {}
 
   checkEmailTaken(email: string) {
+    console.log('email', email);
     return this.http.get(API + '/user/exists/' + email);
   }
 

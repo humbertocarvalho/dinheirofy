@@ -3,7 +3,7 @@
 <form #form="ngForm" [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
   <div class="form-group">
     <input #emailInput formControlName="email" class="form-control" placeholder="Email" autofocus />
-    <df-vmessage *ngIf="signupForm.get('email').errors?.required && form.submitted" text="Email is required,">
+    <df-vmessage *ngIf="signupForm.get('email').errors?.required && form.submitted" text="Email is required">
     </df-vmessage>
     <df-vmessage *ngIf="signupForm.get('email').errors?.email && form.submitted" text="Invalid e-mail"> </df-vmessage>
     <df-vmessage text="Email already taken" *ngIf="signupForm.get('email').errors?.emailTaken"> </df-vmessage>
